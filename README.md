@@ -83,3 +83,21 @@ kubectl rollout undo deployment/demo-app -n demo
 - Demo app pod restarts
 
 As well as standard Helm charts
+
+## Screenshots
+
+### ArgoCD Apps Synced & Healthy
+
+![ArgoCD Apps](screenshots/argocd-dashboard.png)
+
+### Grafana Cluster Overview Dashboard
+
+![Grafana Dashboard](screenshots/grafana-dashboard.png)
+
+### Prometheus Alerts Dashboard
+
+![Prometheus Alerts](screenshots/alerts-dashboard.png)
+
+### PodCrashLooping Alert Firing
+
+![PodCrashLooping Firing](screenshots/crashloop-firing.png)
