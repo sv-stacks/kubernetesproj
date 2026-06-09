@@ -2,6 +2,7 @@ grafana:
   adminPassword: changeme
   persistence:
     enabled: false
+  defaultDashboardsEnabled: false
 
 prometheus:
   prometheusSpec:
@@ -38,7 +39,8 @@ alertmanager:
       routes:
       - receiver: "null"
         matchers:
-        - alertname = "Watchdog"
+        - severity = critical
+        - custom = "true"
     receivers:
     - name: "null"
     - name: telegram
@@ -58,6 +60,7 @@ additionalPrometheusRulesMap:
             for: 1m
             labels:
               severity: critical
+              custom: "true"
             annotations:
               summary: "Pod {{ $labels.pod }} is crash looping"
               description: "Pod {{ $labels.pod }} in namespace {{ $labels.namespace }} is restarting frequently."
@@ -68,6 +71,7 @@ additionalPrometheusRulesMap:
             for: 2m
             labels:
               severity: warning
+              custom: "true"
             annotations:
               summary: "High CPU on {{ $labels.instance }}"
               description: "Node CPU usage is above 80% for 2 minutes."
@@ -79,7 +83,7 @@ nodeExporter:
   enabled: true
 
 defaultRules:
-  create: true
+  create: false
 
 prometheusOperator:
   admissionWebhooks:

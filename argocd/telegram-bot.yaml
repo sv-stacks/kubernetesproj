@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/sv-stacks/kubernetesproj
     targetRevision: HEAD
-    path: telegram-bot
+    path: alertmanager
   destination:
     server: https://kubernetes.default.svc
     namespace: monitoring
