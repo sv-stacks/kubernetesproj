@@ -13,6 +13,8 @@ data:
     *Summary:* {{ .Annotations.summary }}
     *Description:* {{ .Annotations.description }}
     *Severity:* {{ .Labels.severity }}
+    *Starts At:* {{ .StartsAt }}
+    {{ if eq $.Status "firing" }}{{ else }}*Ends At:* {{ .EndsAt }}{{ end }}
     {{ if eq $.Status "resolved" }}*Duration:* {{ .EndsAt.Sub .StartsAt }}{{end}}
     {{ end }}
     {{ end }}
