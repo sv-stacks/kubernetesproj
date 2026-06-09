@@ -28,6 +28,8 @@ alertmanager:
     alertmanagerConfigNamespaceSelector: {}
     secrets:
       - alertmanager-telegram
+    configMaps:
+      - alertmanager-telegram-template
   config:
     global:
       resolve_timeout: 5m
@@ -51,7 +53,7 @@ alertmanager:
         parse_mode: Markdown
         message: '{{ template "telegram.message" . }}'
     templates:
-    - /etc/alertmanager/config/*.tmpl
+    - /etc/alertmanager/configmaps/alertmanager-telegram-template/*.tmpl
 
 additionalPrometheusRulesMap:
   demo-app-alerts:
