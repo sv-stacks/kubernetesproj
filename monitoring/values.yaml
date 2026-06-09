@@ -23,20 +23,30 @@ alertmanager:
           resources:
             requests:
               storage: 1Gi
+    alertmanagerConfigSelector: {}
+    alertmanagerConfigNamespaceSelector: {}
   config:
     global:
       resolve_timeout: 5m
     route:
-      group_by: ["alertname"]
+      receiver: telegram
+      group_by:
+      - alertname
       group_wait: 10s
       group_interval: 10s
       repeat_interval: 1h
-      receiver: "telegram"
+      routes:
+      - receiver: "null"
+        matchers:
+        - alertname = "Watchdog"
     receivers:
-      - name: "telegram"
-        webhook_configs:
-          - url: "http://alertmanager-telegram-bot:9087/alert"
-            send_resolved: true
+    - name: "null"
+    - name: telegram
+      webhook_configs:
+      - url: http://alertmanager-telegram-bot:9087/alert
+        send_resolved: true
+    templates:
+    - /etc/alertmanager/config/*.tmpl
 
 additionalPrometheusRulesMap:
   demo-app-alerts:
