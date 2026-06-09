@@ -12,7 +12,7 @@ spec:
       helm:
         valueFiles:
           - $values/monitoring/values.yaml
-    - repoURL: https://github.com/YOUR_USERNAME/k8s-monitoring
+    - repoURL: https://github.com/sv-stacks/kubernetesproj
       targetRevision: HEAD
       ref: values
   destination:
