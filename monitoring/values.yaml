@@ -26,27 +26,30 @@ alertmanager:
               storage: 1Gi
     alertmanagerConfigSelector: {}
     alertmanagerConfigNamespaceSelector: {}
+    secrets:
+      - alertmanager-telegram
   config:
     global:
       resolve_timeout: 5m
     route:
-      receiver: telegram
+      receiver: "null"
       group_by:
       - alertname
       group_wait: 10s
       group_interval: 10s
       repeat_interval: 1h
       routes:
-      - receiver: "null"
+      - receiver: telegram
         matchers:
-        - severity = critical
         - custom = "true"
     receivers:
     - name: "null"
     - name: telegram
-      webhook_configs:
-      - url: http://alertmanager-telegram-bot:9087/alert
-        send_resolved: true
+      telegram_configs:
+      - bot_token_file: /etc/alertmanager/secrets/alertmanager-telegram/token
+        chat_id: 478171057
+        parse_mode: Markdown
+        message: '{{ template "telegram.message" . }}'
     templates:
     - /etc/alertmanager/config/*.tmpl
 
