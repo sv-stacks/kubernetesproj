@@ -67,3 +67,9 @@ nodeExporter:
 
 defaultRules:
   create: true
+
+prometheusOperator:
+  admissionWebhooks:
+    enabled: false
+  tls:
+    enabled: false
