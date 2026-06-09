@@ -1,4 +1,6 @@
 #!/bin/bash
+export AWS_PROFILE=eks-admin
+
 set -e
 
 source .env.secrets

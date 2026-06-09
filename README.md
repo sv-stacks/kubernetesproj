@@ -35,6 +35,7 @@ argocd login localhost:8080 --username admin --insecure
 kubectl apply -f argocd/monitoring-app.yaml
 kubectl apply -f argocd/demo-app.yaml
 kubectl apply -f argocd/grafana-dashboards-app.yaml
+kubectl apply -f argocd/alertmanager-app.yaml
 ```
 
 ### Access services
@@ -108,3 +109,7 @@ As well as standard Helm charts
 ### Demo App Running
 
 ![Demo App Running](screenshots/demo-app-running.png)
+
+### Telegram Alerts for PodCrashLooping
+
+![Telegram Alerts](screenshots/telegram-alert.png)
