@@ -51,6 +51,9 @@ kubectl port-forward svc/monitoring-kube-prometheus-alertmanager -n monitoring 9
 
 # ArgoCD
 kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+# An App itself
+kubectl port-forward svc/demo-app -n demo 8888:80
 ```
 
 ## Alerts
@@ -101,3 +104,7 @@ As well as standard Helm charts
 ### PodCrashLooping Alert Firing
 
 ![PodCrashLooping Firing](screenshots/crashloop-firing.png)
+
+### Demo App Running
+
+![Demo App Running](screenshots/demo-app-running.png)
