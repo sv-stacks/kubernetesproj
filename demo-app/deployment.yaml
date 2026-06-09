@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: demo-app
-          image: nginx:alpine
+          image: stashkevychv/devops-app:v1.0.0
           ports:
             - containerPort: 80
           resources:
